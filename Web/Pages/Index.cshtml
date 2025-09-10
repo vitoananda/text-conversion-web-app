@@ -1,0 +1,56 @@
+﻿@page
+@model Web.Pages.IndexModel
+@{
+    ViewData["Title"] = "Text Conversion App";
+    var conversionResult = Model.ConversionResult;
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Text Conversion App</h1>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Enter Text to Convert</h5>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-page-handler="Convert">
+                        <div class="form-group">
+                            <input asp-for="Text" class="form-control" id="textInput" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2">Convert</button>
+                    </form>
+                </div>
+            </div>
+
+            @if (conversionResult != null)
+            {
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h5 class="card-title">Conversion Results</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6>Original Text;</h6>
+                        <p>@conversionResult.OriginalText</p>
+
+                        <h6>First Result:</h6>
+                        <p>@conversionResult.FirstResult</p>
+
+                        <h6>Second Result:</h6>
+                        <p>@conversionResult.SecondResult</p>
+
+                        <h6>Third Result:</h6>
+                        <p>@conversionResult.ThirdResult</p>
+
+                        <h6>Fourth Result:</h6>
+                        <p>@conversionResult.FourthResult</p>
+
+                        <h6>Fifth Result:</h6>
+                        <p>@conversionResult.FifthResult</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
